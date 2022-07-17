@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:instaclone_app/resources/auth_methods.dart';
 import 'package:instaclone_app/responsive/mobile_screen_layout.dart';
 import 'package:instaclone_app/responsive/responsive_layout_screen.dart';
 import 'package:instaclone_app/responsive/web_screen_layout.dart';
 import 'package:instaclone_app/utils/colors.dart';
 import 'package:instaclone_app/widgets/text_field_input.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  SignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
@@ -49,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 64,
           ),
           Stack(
-            children: [
+            children: <Widget>[
               const CircleAvatar(
                 radius: 64,
                 backgroundImage: NetworkImage(
@@ -104,7 +105,16 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 24,
           ),
           InkWell(
+            onTap: () async {
+              String res = await AuthMethods().signUpUser(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                  username: _usernameController.text,
+                  bio: _bioController.text);
+              print(res);
+            },
             child: Container(
+              child: const Text('Sign Up'),
               width: double.infinity,
               alignment: Alignment.center,
               padding: const EdgeInsets.symmetric(vertical: 12),
@@ -115,7 +125,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: blueColor,
               ),
             ),
-            onTap: () {},
           ),
           const SizedBox(
             height: 12,
