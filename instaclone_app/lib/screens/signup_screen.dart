@@ -47,7 +47,7 @@ class _SignupScreenState extends State<SignupScreen> {
             height: 64,
           ),
           const SizedBox(
-            height: 64,
+            height: 32,
           ),
           Stack(
             children: <Widget>[
@@ -97,7 +97,7 @@ class _SignupScreenState extends State<SignupScreen> {
             height: 24,
           ),
           TextFieldInput(
-            hintText: 'Enter your bio',
+            hintText: 'Enter your name',
             textInputType: TextInputType.text,
             textEditingController: _bioController,
           ),
@@ -114,7 +114,8 @@ class _SignupScreenState extends State<SignupScreen> {
               print(res);
             },
             child: Container(
-              child: const Text('Sign Up'),
+              child:
+                  const Text('Sign Up', style: TextStyle(color: Colors.white)),
               width: double.infinity,
               alignment: Alignment.center,
               padding: const EdgeInsets.symmetric(vertical: 12),
@@ -146,7 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 onTap: () {},
                 child: Container(
                   child: const Text(
-                    ' Login.',
+                    ' Log in.',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
