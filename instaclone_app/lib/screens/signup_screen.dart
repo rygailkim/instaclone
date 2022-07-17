@@ -63,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: IconButton(
                   onPressed: () {},
                   icon: const Icon(Icons.add_a_photo),
-                  color: Colors.black,
+                  color: blueColor,
                 ),
               )
             ],
@@ -72,34 +72,34 @@ class _SignupScreenState extends State<SignupScreen> {
             height: 24,
           ),
           TextFieldInput(
-            hintText: 'Enter your username',
+            hintText: 'Full name',
+            textInputType: TextInputType.text,
+            textEditingController: _bioController,
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          TextFieldInput(
+            hintText: 'Username',
             textInputType: TextInputType.text,
             textEditingController: _usernameController,
           ),
           const SizedBox(
-            height: 24,
+            height: 16,
           ),
           TextFieldInput(
-            hintText: 'Enter your email',
+            hintText: 'Email',
             textInputType: TextInputType.emailAddress,
             textEditingController: _emailController,
           ),
           const SizedBox(
-            height: 24,
+            height: 16,
           ),
           TextFieldInput(
-            hintText: 'Enter your password',
+            hintText: 'Password',
             textInputType: TextInputType.text,
             textEditingController: _passwordController,
             isPass: true,
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          TextFieldInput(
-            hintText: 'Enter your name',
-            textInputType: TextInputType.text,
-            textEditingController: _bioController,
           ),
           const SizedBox(
             height: 24,

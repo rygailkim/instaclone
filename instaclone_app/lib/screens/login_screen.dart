@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instaclone_app/resources/auth_methods.dart';
 import 'package:instaclone_app/responsive/mobile_screen_layout.dart';
 import 'package:instaclone_app/responsive/responsive_layout_screen.dart';
 import 'package:instaclone_app/responsive/web_screen_layout.dart';
@@ -22,6 +23,11 @@ class _LoginScreenState extends State<LoginScreen> {
     _emailController.dispose();
     _passwordController.dispose();
   }
+
+void loginUser() async{
+  String res = await AuthMethods().loginUser(email: _emailController.text, password: _passwordController.text)
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 8),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: loginUser,
                 child: Container(
                   child: const Text(
                     ' Sign up.',

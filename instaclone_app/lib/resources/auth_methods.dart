@@ -51,7 +51,7 @@ class AuthMethods {
     required String email,
     required String password,
   }) async {
-    String res = "Some error Occurred";
+    String res = "log in error";
     try {
       if (email.isNotEmpty || password.isNotEmpty) {
         // logging in user with email and password
