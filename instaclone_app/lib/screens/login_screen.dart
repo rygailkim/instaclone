@@ -4,6 +4,7 @@ import 'package:instaclone_app/responsive/mobile_screen_layout.dart';
 import 'package:instaclone_app/responsive/responsive_layout_screen.dart';
 import 'package:instaclone_app/responsive/web_screen_layout.dart';
 import 'package:instaclone_app/utils/colors.dart';
+import 'package:instaclone_app/utils/utils.dart';
 import 'package:instaclone_app/widgets/text_field_input.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -24,10 +25,14 @@ class _LoginScreenState extends State<LoginScreen> {
     _passwordController.dispose();
   }
 
-void loginUser() async{
-  String res = await AuthMethods().loginUser(email: _emailController.text, password: _passwordController.text)
-}
+  void loginUser() async {
+    String res = await AuthMethods().loginUser(
+        email: _emailController.text, password: _passwordController.text);
 
+    if (res == "success") {
+      showSnackBar(context, res);
+    } else {}
+  }
 
   @override
   Widget build(BuildContext context) {

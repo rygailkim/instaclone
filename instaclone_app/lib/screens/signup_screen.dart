@@ -1,9 +1,13 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:instaclone_app/resources/auth_methods.dart';
 import 'package:instaclone_app/responsive/mobile_screen_layout.dart';
 import 'package:instaclone_app/responsive/responsive_layout_screen.dart';
 import 'package:instaclone_app/responsive/web_screen_layout.dart';
 import 'package:instaclone_app/utils/colors.dart';
+import 'package:instaclone_app/utils/utils.dart';
 import 'package:instaclone_app/widgets/text_field_input.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -18,6 +22,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  Uint8List? _image;
 
   @override
   void dispose() {
@@ -26,6 +31,13 @@ class _SignupScreenState extends State<SignupScreen> {
     _passwordController.dispose();
     _bioController.dispose();
     _usernameController.dispose();
+  }
+
+  void selectImage() async {
+    Uint8List image = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = image;
+    });
   }
 
   @override
@@ -51,19 +63,23 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
           Stack(
             children: <Widget>[
-              const CircleAvatar(
-                radius: 64,
-                backgroundImage: NetworkImage(
-                    'https://images.unsplash.com/photo-1657947311396-a5e662d14d22?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'),
-                backgroundColor: Colors.red,
-              ),
+              _image != null
+                  ? CircleAvatar(
+                      radius: 64,
+                      backgroundImage: MemoryImage(_image!),
+                    )
+                  : const CircleAvatar(
+                      radius: 64,
+                      backgroundImage: NetworkImage(
+                          'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'),
+                    ),
               Positioned(
                 bottom: -10,
                 left: 80,
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: selectImage,
                   icon: const Icon(Icons.add_a_photo),
-                  color: blueColor,
+                  color: Colors.black,
                 ),
               )
             ],
