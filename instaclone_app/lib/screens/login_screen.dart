@@ -60,37 +60,56 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 24,
           ),
 
-          // login buttonSize
-          Container(
-            child: const Text('Log In', style: TextStyle(color: Colors.white)),
-            width: double.infinity,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            decoration: const ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
+          // login button
+          InkWell(
+            child: Container(
+              child:
+                  const Text('Log in', style: TextStyle(color: Colors.white)),
+              width: double.infinity,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              decoration: const ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(4)),
+                ),
+                color: blueColor,
               ),
-              color: blueColor,
             ),
           ),
 
-          const SizedBox(
-            height: 12,
-          ),
+          // const SizedBox(
+          //   height: 8,
+          // ),
           Flexible(
             child: Container(),
             flex: 2,
           ),
 
           // sign up
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Container(
-              child: const Text(
-                "Don't have an account?",
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                child: const Text(
+                  'Dont have an account?',
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 8),
               ),
-              padding: const EdgeInsets.symmetric(vertical: 8),
-            ),
-          ])
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  child: const Text(
+                    ' Sign up.',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: blueColor,
+                    ),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                ),
+              ),
+            ],
+          )
         ]),
       ),
     );
